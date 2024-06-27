@@ -61,5 +61,15 @@ namespace Topic.API.Controllers
             return Ok("Kategori başarıyla güncellendi");
         }
 
+
+        [HttpGet("GetActiveCategories")]
+
+        public IActionResult GetActiveCategories()
+        {
+            var values = _categoryService.TGetFilteredList(x => x.Status == true);
+            var mappedResult = _mapper.Map<List<ResultCategoryDto>>(values);
+            return Ok(mappedResult);
+        }
+
     }
 }

@@ -9,5 +9,8 @@ namespace Topic.DataAccessLayer.Abstract
 {
     public interface ICategoryDal : IGenericDal<Category>
     {
+
+        List<Category> GetActiveCategories();
+
     }
 }

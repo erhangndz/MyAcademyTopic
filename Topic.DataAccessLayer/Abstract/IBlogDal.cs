@@ -11,5 +11,9 @@ namespace Topic.DataAccessLayer.Abstract
     {
         List<Blog> GetBlogsWithCategories();
 
+        Blog GetBlogWithCategoryById(int id);
+
+        List<Blog> GetBlogsByCategoryId(int id);
+
     }
 }
