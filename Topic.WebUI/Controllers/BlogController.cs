@@ -21,7 +21,7 @@ namespace Topic.WebUI.Controllers
         public async Task<IActionResult> GetBlogsByCategory(int id)
         {
 
-            var values = await _client.GetFromJsonAsync<List<ResultBlogDto>>("https://localhost:7165/api/blogs/GetBlogsByCategoryId/" + id);
+            var values = await _client.GetFromJsonAsync<List<ResultBlogDto>>("blogs/GetBlogsByCategoryId/" + id);
 
             return View(values);
         }
@@ -29,7 +29,7 @@ namespace Topic.WebUI.Controllers
 
         public async Task<IActionResult> GetBlogDetails(int id)
         {
-            var value = await _client.GetFromJsonAsync<ResultBlogDto>("https://localhost:7165/api/blogs/" + id);
+            var value = await _client.GetFromJsonAsync<ResultBlogDto>("blogs" + id);
             return View(value);
         }
     }

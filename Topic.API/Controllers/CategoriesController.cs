@@ -66,7 +66,7 @@ namespace Topic.API.Controllers
 
         public IActionResult GetActiveCategories()
         {
-            var values = _categoryService.TGetFilteredList(x => x.Status == true);
+            var values = _categoryService.TGetActiveCategories();
             var mappedResult = _mapper.Map<List<ResultCategoryDto>>(values);
             return Ok(mappedResult);
         }

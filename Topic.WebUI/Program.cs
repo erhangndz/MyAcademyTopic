@@ -1,8 +1,18 @@
+using Microsoft.Extensions.Options;
+using Topic.WebUI.Services;
+using Topic.WebUI.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddHttpClient();
+// Add services to the container.
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection(nameof(ApiSettings)));
+builder.Services.AddHttpClient<IBlogService, BlogService>((sp, client) =>
+{
+    var settings = sp.GetRequiredService<IOptions<ApiSettings>>().Value;
+
+    client.BaseAddress = new Uri(settings.BaseUrl);
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
